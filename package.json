@@ -7,6 +7,8 @@
     "build": "next build",
     "start": "next start --port 3000 --hostname 0.0.0.0",
     "lint": "next lint"
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "bootstrap": "^5.3.2",
