@@ -68,8 +68,8 @@ export default Home;
 
 export async function getStaticProps() {
   // Get the path to your JSON files
-  const peoplePath = path.join(process.cwd(), 'data/people.json');
-  const activitiesPath = path.join(process.cwd(), 'data/activities.json');
+  const peoplePath = path.join(process.cwd(), 'public/people.json');
+  const activitiesPath = path.join(process.cwd(), 'public/activities.json');
 
   // Read the JSON files and parse the data
   const peopleData: Person[] = JSON.parse(fs.readFileSync(peoplePath, 'utf-8'));
