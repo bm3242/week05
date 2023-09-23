@@ -1,3 +1,4 @@
+import React from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
 import styles from '../../styles/Home.module.css';
@@ -22,13 +23,13 @@ interface PersonDetailProps {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const persons: Person[] = require('../../public/persons.json');
+  const persons: Person[] = require('../../public/people.json');
   const paths = persons.map((person) => ({ params: { id: person.id } }));
   return { paths, fallback: false };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const persons: Person[] = require('../../public/persons.json');
+  const persons: Person[] = require('../../public/people.json');
   const details: Detail[] = require('../../public/details.json');
   
   const person = persons.find((p) => p.id === params?.id);

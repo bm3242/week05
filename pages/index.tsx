@@ -1,3 +1,4 @@
+import React from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
@@ -7,7 +8,7 @@ import Image from 'next/image';
 import fs from 'fs';
 import path from 'path';
 
-interface Person {
+interface People {
   id: string;
   name: string;
   relatedPersonId: string;
@@ -17,18 +18,18 @@ interface Detail {
   id: string;
   age: number;
   address: string;
-  relatedPersons: Array<{ id: string; relation: string }>;
+  relatedPeople: Array<{ id: string; relation: string }>;
 }
 
 interface HomeProps {
-  persons: Person[];
+  people: People[];
   details: Detail[];
 }
 
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
-  const personsFilePath = path.join(process.cwd(), 'public', 'persons.json');
-  const personsJsonData = fs.readFileSync(personsFilePath, 'utf8');
-  const persons: Person[] = JSON.parse(personsJsonData);
+  const peopleFilePath = path.join(process.cwd(), 'public', 'people.json');
+  const peopleJsonData = fs.readFileSync(peopleFilePath, 'utf8');
+  const people: People[] = JSON.parse(peopleJsonData);
 
   const detailsFilePath = path.join(process.cwd(), 'public', 'details.json');
   const detailsJsonData = fs.readFileSync(detailsFilePath, 'utf8');
@@ -36,13 +37,13 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
 
   return {
     props: {
-      persons,
+      people,
       details,
     },
   };
 };
 
-const Home: NextPage<HomeProps> = ({ persons, details }) => {
+const Home: NextPage<HomeProps> = ({ people, details }) => {
   return (
     <div className={styles.container}>
       <Head>
@@ -57,13 +58,13 @@ const Home: NextPage<HomeProps> = ({ persons, details }) => {
         </h1>
 
         <p className={styles.description}>
-          List of persons:
+          List of people:
         </p>
 
         <ul>
-          {persons.map((person) => (
+          {people.map((person) => (
             <li key={person.id}>
-              <Link href={`/persons/${person.id}`}>{person.name}</Link>
+              <Link href={`/people/${person.id}`}>{person.name}</Link>
             </li>
           ))}
         </ul>
