@@ -1,8 +1,7 @@
 module.exports = {
-  preset: 'ts-jest',
   testEnvironment: 'jsdom',
-  setupFilesAfterEnv: ['./jest.setup.js'],
-  transform: {
-    '^.+\\.(ts|tsx)$': 'ts-jest',
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
+  moduleNameMapper: {
+    '\\.(css|less|scss|sss|styl)$': '<rootDir>/node_modules/jest-css-modules',
   },
 };

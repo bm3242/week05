@@ -1,5 +1,20 @@
+import React from 'react';
+
 import { render, screen } from '@testing-library/react';
-import PersonDetail from '../pages/persons/[id]';
+import PersonDetail from '../pages/people/[id]';
+import { useRouter } from 'next/router';
+
+// Mock useRouter
+jest.mock('next/router', () => ({
+  useRouter() {
+    return {
+      route: 'people/[id]',
+      pathname: 'people/[id]',
+      query: '',
+      asPath: '',
+    };
+  },
+}));
 
 describe('PersonDetail Component', () => {
   it('renders person details correctly', () => {
