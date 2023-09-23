@@ -1,0 +1,18 @@
+[
+  {
+    "id": "1",
+    "age": 30,
+    "address": "123 Main St, Springfield, USA",
+    "relatedPersons": [
+      {"id": "2", "relation": "Friend"}
+    ]
+  },
+  {
+    "id": "2",
+    "age": 28,
+    "address": "456 Elm St, Springfield, USA",
+    "relatedPersons": [
+      {"id": "1", "relation": "Friend"}
+    ]
+  }
+]
